@@ -16,17 +16,22 @@ import java.util.Scanner;
  *  29~35번문항이 가장 높으면 매니아유형
  *  36~42번문항이 가장 높으면 아가페유형
  *  
- * 
+ *  자체 평가 : 총점수가 같았을때의 처리를 어떻게 해야할까...나머지는 생각한대로 구현을 하였다. 점수가 같을때의 구현방법을 고민해봐야겠다.
  * 
  */
 public class _03_연애고사총합출력 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		int k;
-		int shape[]=new int[6];
-		  // 각각의 합
-		
-		for(int i=1; i<=2;i++) {
+		int shape[]=new int[6];//각각의 총합
+		String yuhyeong [] = {"에로스 유형","루더스 유형","스트로게 유형","프레그마 유형","매니아 유형","아가페 유형"};//유형 배열
+		int[] rank=new int[6];//총합 순위
+		for(int i=0;i<rank.length;i++) {
+			rank[i]=1;//전부1값
+			
+		}
+		 
+		for(int i=1; i<=42;i++) {
 			System.out.println("///전혀아니다 1 점/// 아니다 2점 //그저그렇다 3점 ///그렇다 4점///// 매우그렇다5점");
 			System.out.print((i)+"번째 문제를 입력하세요:");
 			k=scan.nextInt();
@@ -57,18 +62,42 @@ public class _03_연애고사총합출력 {
 			
 		}
 	
-		String change_type[]=new String[6];
+				
+	
+		//0~5번순 인덱스 순으로 출력 어떻게 유형까지 판단하지...?
+		//2023.09.28...... 내일 다시
 		
-		for(int i=0;i<change_type.length;i++) {
 			
-			change_type[i]=String.valueOf(shape[i]);
+		for(int i=0;i<rank.length;i++) {
+			
+				for(int j=0;j<rank.length;j++) {
+					
+					if (shape[i]<shape[j]) {
+						rank[i]++;
+						
+					}
+				}
+			
+		}
+		for(int i=0;i<shape.length;i++) {
+			
+			if (rank[i]==1) {//1랭크 해당하는 유형 배열 출력
+				System.out.println("===========================================");
+				System.out.println("당신의 유형은 "+yuhyeong[i]+" 유형입니다.");
+				
+			}
+			if (rank[i]==2) {//2랭크에 해당하는 유형 배열 출력
+				System.out.println("===========================================");
+				System.out.println("당신이 추후에 될수있는 유형은 "+yuhyeong[i]+" 유형입니다.");
+				
+			}
 			
 		}
 		
-	
-		System.out.println(Arrays.toString(shape));//0~5번순 인덱스 순으로 출력 어떻게 유형까지 판단하지...?
-		//2023.09.29...... 내일 다시
-			
+		
+		System.out.println("=======================");
+		System.out.println("아래는 순서대로 결과 값입니다.");
+		System.out.println(Arrays.toString(shape));
 		
 	}
 }
