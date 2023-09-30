@@ -1,3 +1,4 @@
+package _04_삼각형_원_사각형계산기;
 
 import java.util.Scanner;
 
@@ -41,4 +42,5 @@ public void getCheck() {
 
 
 }
+
 

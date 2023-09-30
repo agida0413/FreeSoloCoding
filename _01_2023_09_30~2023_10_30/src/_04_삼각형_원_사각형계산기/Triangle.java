@@ -1,3 +1,4 @@
+package _04_삼각형_원_사각형계산기;
 
 import java.util.Scanner;
 public class Triangle { // 삼각형과 관련된값계산

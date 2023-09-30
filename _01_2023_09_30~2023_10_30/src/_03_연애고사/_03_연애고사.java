@@ -19,7 +19,7 @@ import java.util.Scanner;
  *  자체 평가 : 총점수가 같았을때의 처리를 어떻게 해야할까...나머지는 생각한대로 구현을 하였다. 점수가 같을때의 구현방법을 고민해봐야겠다.
  * 
  */
-public class _03_연애고사총합출력 {
+public class _03_연애고사 {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		int k;

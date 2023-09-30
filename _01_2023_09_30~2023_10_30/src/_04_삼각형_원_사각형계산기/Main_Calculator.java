@@ -1,3 +1,5 @@
+package _04_삼각형_원_사각형계산기;
+
 /*
  * 
  * 동기 : 클래스를 공부하다가 생성자 , 인스턴스 개념 등에 대해 공부할 좋은 예제가 없을까 생각하다가 계산기의 공통성을 이용해서 계산기 프로그램을 만들어 볼생각이 들었다.
@@ -12,7 +14,7 @@
  * 
  */
 import java.util.Scanner;
-public class Calculator {
+public class Main_Calculator {
 	public static void main(String[] args) {
 		Scanner scan = new Scanner(System.in);
 		Return r1 = new Return();

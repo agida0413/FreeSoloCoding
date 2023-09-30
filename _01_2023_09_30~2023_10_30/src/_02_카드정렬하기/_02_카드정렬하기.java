@@ -1,3 +1,5 @@
+package _02_카드정렬하기;
+
 /*
  *  동기 : 선택정렬 , 버블정렬 을 공부중 물론 메소드를 통해 쉽게 처리할수 있지만 
  *  	 정확한 알고리즘을 이해하고 싶었음. 
@@ -15,12 +17,12 @@
  * 
  * 
  */
-package _02_카드정렬하기;
+
 
 import java.util.Arrays;
 import java.util.Iterator;
 
-public class 정렬알고리즘_카드정렬하기 {
+public class _02_카드정렬하기 {
 
 	public static void main(String[] args) {
 		//모양과 숫자를 분리? - > 처음엔 숫자  추후에 모양
