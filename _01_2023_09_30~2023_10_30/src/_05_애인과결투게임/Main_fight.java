@@ -18,11 +18,29 @@ package _05_애인과결투게임;
  */
 import java.util.Scanner;
 
+import _05_애인과결투게임.UserAndLover.skill_name;
+
 public class Main_fight {
 public static void main(String[] args) throws InterruptedException {
+	Scanner scan = new Scanner(System.in);
+	User user =new User();
+	Lover lover =new Lover();
+	
 	
 	start_interface();
 	
+	
+	
+	System.out.print("당신의 이름을 입력하세요:");
+	String name1=scan.next();//유저입력
+	user.setName(name1);
+	System.out.print("당신의 애인의 이름을 입력하세요:");
+	String name2 =scan.next();//상대방입력
+	lover.setName(name2);
+	Thread.sleep(1000);
+	System.out.println("잠시후 "+lover.getName()+"과의 혈투가 펼쳐집니다.......");
+	
+	second_start_interface();
 	
 	}
 
@@ -59,20 +77,21 @@ public static void  start_interface() throws InterruptedException {
 		
 		}
 	
-		System.out.print("당신의 이름을 입력하세요:");
-		User.name=scan.next();//유저입력
-		System.out.print("당신의 애인의 이름을 입력하세요:");
-		Lover.name=scan.next();//상대방입력
-		Thread.sleep(1000);
-		System.out.println("잠시후 "+Lover.name+"과의 혈투가 펼쳐집니다.......");
-		Thread.sleep(500);
-		for(int i =5;i>0;i--) {
-			
-			System.out.println(i+"!!!!!!!!!");
-			Thread.sleep(1000);
-		}
-		System.out.println("Start!!!!!!");
+		
 	}
+
+public static void second_start_interface() throws InterruptedException{
+	
+	
+	Thread.sleep(500);
+	for(int i =5;i>0;i--) {
+		
+		System.out.println(i+"!!!!!!!!!");
+		Thread.sleep(1000);
+	}
+	System.out.println("Start!!!!!!");
+	
+}
 }
 
 
