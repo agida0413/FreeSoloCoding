@@ -2,12 +2,12 @@ package _06_블랙잭;
 
 public class Deck {
 	
-	String shap_num[]=new String[13];//모양과 숫자의 문자열합
+	 String shap_num[]=new String[13];//모양과 숫자의 문자열합
 	String num[]=new String[13];//문자열 
 	
 	
 	
-	 int calNum_count[]=new int[13];
+	 
 	
 	
 	

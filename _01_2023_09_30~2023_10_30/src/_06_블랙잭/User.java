@@ -1,15 +1,21 @@
 package _06_블랙잭;
 
+import java.util.IllegalFormatCodePointException;
 import java.util.Scanner;
 
-public class User {
-	public String name;
-	Deck dia_deck = new Deck("◆");
-	Deck clover_deck=new Deck("♣");
-	Deck spade_deck=new Deck("♠");
-	Deck heart_deck=new Deck("♥");
+public class User extends Deck{
+	String name = "사용자";
+	static Deck dia_deck = new Deck("◆");//유저와 컴퓨터 모두 같은덱에서 뽑아야하므로 static 
+static 	Deck clover_deck=new Deck("♣");//유저와 컴퓨터 모두 같은덱에서 뽑아야하므로 static 
+static 	Deck spade_deck=new Deck("♠");//유저와 컴퓨터 모두 같은덱에서 뽑아야하므로 static 
+static 	Deck heart_deck=new Deck("♥");//유저와 컴퓨터 모두 같은덱에서 뽑아야하므로 static 
 	
-	int calNum[]= {1,2,3,4,5,6,7,8,9,10,10,10,10};//계산할값
+	 int calNum[]= {1,2,3,4,5,6,7,8,9,10,10,10,10};//계산할값
+	static  int dia_calNum_count[]=new int[13];//기본값0, 중복제거를위해 뽑을때마다 해당인덱스값 ++
+	static	int clover_calNum_count[]=new int[13];//유저와 컴퓨터 모두 같은덱에서 뽑아야하므로 static 
+	static	int spade_calNum_count[]=new int[13];//유저와 컴퓨터 모두 같은덱에서 뽑아야하므로 static 
+    static	int heart_calNum_count[]=new int[13];//유저와 컴퓨터 모두 같은덱에서 뽑아야하므로 static 
+	
 	
 	
 	int my_draw_num []= new int[10];//내가 뽑은 값 문자열 과 실제 계산값 저장
@@ -17,8 +23,8 @@ public class User {
 	
 	
 	
-	public int count;//뽑을때 마다 카운트++ 
-	public int sum;
+	static	public int count;//뽑을때 마다 카운트++ 
+
 
 	
 	public int total;//총합
@@ -44,17 +50,14 @@ public class User {
 	
 	
 	
+	
+	
+	
 	public User(){
 		
 		
-	}
-	
-	
-	public User(String name){
-		this();
-		this.name = name;
 		this.count=0;
-		this.sum=0;
+		
 		this.total=0;
 		this.calNum[0]=1;
 		blackjack=false;
@@ -72,7 +75,7 @@ public class User {
 			while(true) {
 					int k=(int)(Math.random()*13);//인덱스 랜덤발생
 				if (i==0) {//숫자선택
-					if (dia_deck.calNum_count[k]==1) {//만약 카운트값이 1이면 continue // 모양이 다이아
+					if (dia_calNum_count[k]==1) {//만약 카운트값이 1이면 continue // 모양이 다이아
 						
 						continue;
 					}
@@ -80,7 +83,7 @@ public class User {
 						my_draw_num[this.count]=calNum[k];
 						my_draw_shape[this.count]=dia_deck.shap_num[k];
 						total+=calNum[k];
-						dia_deck.calNum_count[k]++;
+						dia_calNum_count[k]++;
 					
 						break;
 					}
@@ -88,7 +91,7 @@ public class User {
 				}
 				else if (i==1) {//모양이 클로버
 					
-					if (clover_deck.calNum_count[k]==1) {//만약 카운트값이 1이면 continue 
+					if (clover_calNum_count[k]==1) {//만약 카운트값이 1이면 continue 
 						
 						continue;
 					}
@@ -96,7 +99,7 @@ public class User {
 						my_draw_num[this.count]=calNum[k];
 						my_draw_shape[this.count]=clover_deck.shap_num[k];
 						total+=calNum[k];
-						clover_deck.calNum_count[k]++;
+						clover_calNum_count[k]++;
 						
 						break;
 					}
@@ -104,7 +107,7 @@ public class User {
 				}
 				else if (i==2) {
 					
-					if (spade_deck.calNum_count[k]==1) {//만약 카운트값이 1이면 continue // 모양이 클로버
+					if (spade_calNum_count[k]==1) {//만약 카운트값이 1이면 continue // 모양이 클로버
 						
 						continue;
 					}
@@ -112,14 +115,14 @@ public class User {
 						my_draw_num[this.count]=calNum[k];
 						my_draw_shape[this.count]=spade_deck.shap_num[k];
 						total+=calNum[k];
-						spade_deck.calNum_count[k]++;
+						spade_calNum_count[k]++;
 						
 						break;
 					}
 					
 				}
 				else if (i==3) {
-					if (heart_deck.calNum_count[k]==1) {//만약 카운트값이 1이면 continue // 모양이 하트
+					if (heart_calNum_count[k]==1) {//만약 카운트값이 1이면 continue // 모양이 하트
 						
 						continue;
 					}
@@ -127,7 +130,7 @@ public class User {
 						my_draw_num[this.count]=calNum[k];
 						my_draw_shape[this.count]=heart_deck.shap_num[k];
 						total+=calNum[k];
-						heart_deck.calNum_count[k]++;
+						heart_calNum_count[k]++;
 						
 						break;
 					}
@@ -138,24 +141,32 @@ public class User {
 			
 		
 			}
+			
 			this.count++;
 	}
 	
 	public void first_draw() {
 		this.drawDeck();
 		this.drawDeck();
-	
+		if (this.total==21) {
+			this.blackjack=true;
+		}
+		this.show_my_deck();
 		}
 	
 	public void hit_or_stand() {
 		Scanner scan =new Scanner(System.in);
-		if (total<=21) {
-			while(true) {
+		
+			while(over!=true) {
 			System.out.print("Hit(Y) or Stand(N) :");
 			String answer=scan.next();
 			if (answer.equals("Y")) {
 				hit();
-				break;
+				show_my_deck();
+				if (this.total>=21) {
+					over=true;
+					break;
+				}
 			}
 			else if (answer.equals("N")) {
 				over=true;
@@ -167,14 +178,11 @@ public class User {
 				}
 			}
 		}
-		if (total==21) {
-			blackjack=true;
-		}
-		if (total>21) {
-			over=true;
-		}
 		
-	}
+		
+		
+		
+	
 	public void hit() {
 		drawDeck();
 		
@@ -188,8 +196,11 @@ public class User {
 	
 
 
-	public void show_my_deck() {//null값제외 출력
-	
+	public void show_my_deck() {//null값제외 한 배열을 출력
+		System.out.print(this.name+"의 덱: ");
+		if (this.blackjack==true) {
+			System.out.print(" !!!블랙잭!!! ");
+		}
 		for(String str:this.my_draw_shape) {
 			if (str!=null) {
 				System.out.print("["+str+"]");
