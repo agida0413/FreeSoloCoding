@@ -10,11 +10,87 @@ public class UserInform {
 	private int coupon[]= {1,4,3,1,6};
 	private int have_point[]= {3000,0,1000,5000,13000};
 	public String stack_nickname;
-	private int stack_coupon;
-	private int stack_have_point;
+	private int stack_coupon;//메인에서 계산기에 넘겨야함
+	public String[] getNickname() {
+		return nickname;
+	}
+
+
+
+
+	public String[] getId() {
+		return id;
+	}
+
+
+
+
+	public String[] getPw() {
+		return pw;
+	}
+
+
+
+
+	public int[] getCoupon() {
+		return coupon;
+	}
+
+
+
+
+	public int[] getHave_point() {
+		return have_point;
+	}
+
+
+
+
+	public String getStack_nickname() {
+		return stack_nickname;
+	}
+
+
+
+
+	public int getStack_coupon() {
+		return stack_coupon;
+	}
+
+
+
+
+	public int getStack_have_point() {
+		return stack_have_point;
+	}
+
+
+
+
+	public boolean isLogin_check() {
+		return login_check;
+	}
+
+
+
+
+	public int getAttempt() {
+		return attempt;
+	}
+
+
+
+
+	public int getFailNum() {
+		return failNum;
+	}
+
+	private int stack_have_point;//메인에서 계산기에 넘겨야함
 	public boolean login_check=false;
 	public int attempt;//로그인 시도횟수
 	public int failNum;//실패 횟수
+	
+	
 			
 	public void login() {
 		
@@ -37,6 +113,7 @@ public class UserInform {
 				this.stack_nickname = nickname[i];//i번째 정보들을 변수에 저장
 				this.stack_coupon=coupon[i];
 				this.stack_have_point=have_point[i];
+			
 				login_check=true;
 				break;
 			}
