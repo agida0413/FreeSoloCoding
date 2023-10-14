@@ -7,14 +7,14 @@ import java.util.Set;
 public class Login {
 
 	
-	public void loggin(Set<UserInform>userlist) {//해야할일 : 유저인폼 클래스 반환하여 정보출력 필요
+	public UserInform loggin(Set<UserInform>userlist) {//해야할일 : 유저인폼 클래스 반환하여 정보출력 필요
 		
 
 	
 		
 		Iterator<UserInform> it= userlist.iterator();
-		
-		
+		UserInform logginUser = new UserInform();
+		String re_id="";
 		String id = loggin_id();
 		String pw= loggin_pw();
 		
@@ -24,13 +24,14 @@ public class Login {
 				String pw_value= user.getPw();
 			
 			if (id_value.equals(id)&&pw_value.equals(pw)) {// 입력받은값과 값비교
-				
+				logginUser =user;
 				Main.loggin_check=true;
+				break;
 				
 			}
 			
 		}	
-		
+		return logginUser;
 		
 	}
 	

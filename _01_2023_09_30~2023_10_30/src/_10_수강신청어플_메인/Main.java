@@ -12,12 +12,13 @@ import javax.xml.transform.Source;
 import org.w3c.dom.ls.LSOutput;
 
 import _10_1_수강신청화면.After_Loggin;
+import _10_1_수강신청화면.Computer_Major;
 
 public class Main {
 	
 	static boolean loggin_check;
 	
-public static void main(String[] args) {
+public static void main(String[] args) throws InterruptedException {
 	
 	Set<UserInform>userList =new HashSet();
 	Iterator<UserInform>it =userList.iterator();
@@ -35,11 +36,11 @@ public static void main(String[] args) {
 	
 	UserInform user2=new UserInform();//데이터 임의저장1
 	user2.setAge("24");
-	user2.setName("홍길동");
+	user2.setName("김병호");
 	user2.setId("agida0413");
 	user2.setPw("12345678");
 	user2.setNickname("강아지");
-	user2.setMajor("컴퓨터공학과");
+	user2.setMajor("간호학과");
 	user2.setIdenty("970113-1235221");
 	
 	UserInform user3=new UserInform();//데이터 임의저장1
@@ -48,7 +49,7 @@ public static void main(String[] args) {
 	user3.setId("agida1234");
 	user3.setPw("1234");
 	user3.setNickname("호랑이");
-	user3.setMajor("컴퓨터공학과");
+	user3.setMajor("경영학과");
 	user3.setIdenty("920413-1235221");
 	Scanner scan = new Scanner( System.in);
 	
@@ -72,7 +73,7 @@ public static void main(String[] args) {
 	
 	
 	while(true) {
-		
+		UserInform user = new UserInform();
 		System.out.println("1-회원가입");
 		System.out.println("2-로그인");
 		System.out.println("입력:");
@@ -82,14 +83,32 @@ public static void main(String[] args) {
 			answer=2;
 		}
 		if (answer==2) {
-			login.loggin(userList);
+			user =login.loggin(userList);
+			
+			if (loggin_check==false) {
+				System.out.println("로그인에 실패하셨습니다.");
+				Thread.sleep(1000);
+				continue;
+			}
+			
 			
 			}
 		else {
 			System.out.println("잘못입력하셨습니다.");
+			Thread.sleep(1000);
 			continue;
 		}
 		
+		
+		
+		Thread.sleep(1000);
+		System.out.println("로그인에 성공하셨습니다.");
+		Thread.sleep(1000);
+		Computer_Major major = after_Loggin.major_inform(user);
+		major.show();
+	
+	
+		//내일 구현 : 수강신청 창 , 수강조회 창 , ai(시뮬레이션) , 정보변경, 정보 삭제 창
 	}
 	
 	
