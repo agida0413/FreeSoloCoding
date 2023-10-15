@@ -2,6 +2,7 @@ package _10_1_수강신청화면;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,14 +30,42 @@ Computer_Major(){
 
 
 
-public void show() {
+public void apply_class() {
 	
-	
+	Scanner scan =new Scanner(System.in);
 	
 	majorClasses.stream().forEach((x)->  System.out.println("- "+x.getClassName()+":\t "+x.getProfessor()+
 			"\n "+x.getTime()+"| 정원 : "+x.getClass_setNum())  );
 	
+for (MajorClass majorClass : majorClasses) {
+	while(true) {
+	System.out.println(majorClass.getClassName()+"을 신청하시겠습니까?(Y/N)");
+	String answer = scan.next();
+	try {
+		if (answer.equals("Y")) {
+			majorClass.setClass_setNum(majorClass.getClass_setNum()-1);
+			System.out.println(majorClass.getClassName()+" 신청완료");
+		}
+		else if (answer.equals("N")) {
+			
+		}
+		else {
+			throw new Exception("잘못입력하셨습니다.");
+		}
+	} catch (Exception e) {
+		// TODO: handle exception
+		System.out.println(e.getMessage());
+		continue;
+	}
+	break;
+	}
+	
+	majorClasses.stream().forEach((x)->  System.out.println("- "+x.getClassName()+":\t "+x.getProfessor()+
+			"\n "+x.getTime()+"| 정원 : "+x.getClass_setNum())  );
 	
 }
+}
+
+
 
 }

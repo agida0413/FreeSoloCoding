@@ -105,8 +105,8 @@ public static void main(String[] args) throws InterruptedException {
 		System.out.println("로그인에 성공하셨습니다.");
 		Thread.sleep(1000);
 		Computer_Major major = after_Loggin.major_inform(user);
-		major.show();
-	
+		major.apply_class();
+		break;
 	
 		//내일 구현 : 수강신청 창 , 수강조회 창 , ai(시뮬레이션) , 정보변경, 정보 삭제 창
 	}

@@ -10,7 +10,7 @@ public class MajorClass {
 private String professor;
 private String time;
 private String className;
-private int class_setNum;
+ private int class_setNum;
 	
 MajorClass( String professor, String time,String className,int class_setNum){
 	
